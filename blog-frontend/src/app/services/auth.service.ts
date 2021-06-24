@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+
+export const BASE_URL = 'http://localhost:3000/api';
+export const LOGIN = 'login';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +13,7 @@ export class AuthService {
 
   login(email: string, password: string) {
     return this.http
-      .post<any>('http://localhost:3000/api/users/login', {
+      .post<any>(`${BASE_URL}/users/${LOGIN}`, {
         email,
         password,
       })
