@@ -1,2 +1,38 @@
-<p>login works!</p>
-<button (click)="login()">Sign-In</button>
+<div class="title"><h1>Sign In</h1></div>
+
+<form [formGroup]="loginForm">
+  <div class="container">
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Email"
+        formControlName="email"
+        appearance="fill"
+      />
+      <mat-hint *ngIf="loginForm.controls.email.errors"
+        >Email is required</mat-hint
+      >
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Password"
+        formControlName="password"
+        appearance="fill"
+      />
+      <mat-hint *ngIf="loginForm.controls.password.errors"
+        >Password is required</mat-hint
+      >
+    </mat-form-field>
+
+    <button
+      mat-flat-button
+      color="primary"
+      [disabled]="!loginForm.valid"
+      (click)="onsubmitForm()"
+    >
+      Sign-In
+    </button>
+  </div>
+</form>
