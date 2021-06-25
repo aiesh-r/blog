@@ -1,13 +1,42 @@
 import { Component, OnInit } from '@angular/core';
 import {
+  AbstractControl,
   FormBuilder,
-  FormControl,
   FormGroup,
+  ValidationErrors,
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/auth.service';
+
+export class CustomValidation {
+  static passwordValidateforNumbers(
+    constrols: AbstractControl
+  ): ValidationErrors {
+    const regex = /\d/;
+    if (regex.test(constrols.value) && constrols.value !== null) {
+      return { passwordInvalid: false };
+    } else {
+      return { passwordInvalid: true };
+    }
+  }
+
+  static passwordMatchValidation(controls: AbstractControl): ValidationErrors {
+    const password = controls.get('password')?.value;
+    const confirmPassword = controls.get('confirmPassword')?.value;
+
+    if (
+      password === confirmPassword &&
+      password !== null &&
+      confirmPassword !== null
+    ) {
+      return { paswwordUnmatch: false };
+    } else {
+      return { paswwordNotmatch: true };
+    }
+  }
+}
 
 @Component({
   selector: 'app-register',
@@ -21,13 +50,32 @@ export class RegisterComponent implements OnInit {
     private route: Router,
     private formBuilder: FormBuilder
   ) {
-    this.signupForm = this.formBuilder.group({
-      name: [null, [Validators.required]],
-      username: [null, [Validators.required]],
-      email: [null, [Validators.required]],
-      password: [null, [Validators.required, Validators.minLength(4)]],
-      passwordConfirm: [null, [Validators.required, Validators.minLength(4)]],
-    });
+    this.signupForm = this.formBuilder.group(
+      {
+        name: [null, [Validators.required]],
+        username: [null, [Validators.required]],
+        email: [null, [Validators.required]],
+        password: [
+          null,
+          [
+            Validators.required,
+            Validators.minLength(4),
+            CustomValidation.passwordValidateforNumbers,
+          ],
+        ],
+        passwordConfirm: [
+          null,
+          [
+            Validators.required,
+            Validators.minLength(4),
+            CustomValidation.passwordValidateforNumbers,
+          ],
+        ],
+      },
+      {
+        Validators: CustomValidation.passwordMatchValidation,
+      }
+    );
   }
 
   ngOnInit(): void {}
