@@ -5,17 +5,30 @@ import { map } from 'rxjs/operators';
 export const BASE_URL = 'http://localhost:3000/api';
 export const LOGIN = 'login';
 
+export interface LoginForm {
+  email: string;
+  password: string;
+}
+
+export interface SignupForm {
+  name: string;
+  username: string;
+  email: string;
+  password: string;
+  passwordConfirm: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   constructor(private http: HttpClient) {}
 
-  login(email: string, password: string) {
+  login(loginForm: LoginForm) {
     return this.http
       .post<any>(`${BASE_URL}/users/${LOGIN}`, {
-        email,
-        password,
+        email: loginForm.email,
+        password: loginForm.password,
       })
       .pipe(
         map((token) => {
@@ -24,5 +37,11 @@ export class AuthService {
           return token;
         })
       );
+  }
+
+  register(signupForm: SignupForm) {
+    return this.http
+      .post<any>(`${BASE_URL}/users`, signupForm)
+      .pipe(map((user) => user));
   }
 }
