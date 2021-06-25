@@ -10,6 +10,14 @@ export interface LoginForm {
   password: string;
 }
 
+export interface SignupForm {
+  name: string;
+  username: string;
+  email: string;
+  password: string;
+  passwordConfirm: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -29,5 +37,11 @@ export class AuthService {
           return token;
         })
       );
+  }
+
+  register(signupForm: SignupForm) {
+    return this.http
+      .post<any>(`${BASE_URL}/users`, signupForm)
+      .pipe(map((user) => user));
   }
 }
