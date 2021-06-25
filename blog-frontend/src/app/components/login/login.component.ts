@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/auth.service';
@@ -13,12 +18,12 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   constructor(private authService: AuthService, private route: Router) {
     this.loginForm = new FormGroup({
-      email: new FormControl('', [
+      email: new FormControl(null, [
         Validators.required,
         Validators.minLength(6),
         Validators.email,
       ]),
-      password: new FormControl('', [
+      password: new FormControl(null, [
         Validators.required,
         Validators.minLength(4),
       ]),
@@ -28,11 +33,11 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
 
   onsubmitForm() {
-    if (this.loginForm?.invalid) {
+    if (this.loginForm.invalid) {
       return;
     }
     this.authService
-      .login(this.loginForm?.value)
+      .login(this.loginForm.value)
       .pipe(
         map((token) => {
           this.route.navigate(['admin']);
