@@ -1,3 +1,37 @@
+.main-container {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  height: 100%;
+}
+.row-one {
+  width: 60%;
+  background-image: url("../../../assets/images/bc_image.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.row-two {
+  background-color: #82bade;
+  // background-image: url("../../../assets/images/login_bg.jpg");
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  #login_btn {
+    margin-top: 20px;
+  }
+
+  .info {
+    margin: 50px;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+
+    .des {
+      margin-right: 10px;
+    }
+  }
+}
 h1 {
   text-align: center;
   font-weight: bold;

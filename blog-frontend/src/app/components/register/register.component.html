@@ -1,72 +1,77 @@
-<div class="title"><h1>Sign up</h1></div>
-<form [formGroup]="signupForm">
-  <div class="container">
-    <mat-form-field>
-      <input
-        matInput
-        placeholder="Name"
-        formControlName="name"
-        appearance="fill"
-      />
-      <mat-hint *ngIf="signupForm.controls.name.errors"
-        >Name is required</mat-hint
-      >
-    </mat-form-field>
-    <mat-form-field>
-      <input
-        matInput
-        placeholder="Username"
-        formControlName="username"
-        appearance="fill"
-      />
-      <mat-hint *ngIf="signupForm.controls.username.errors"
-        >Username is required</mat-hint
-      >
-    </mat-form-field>
-    <mat-form-field>
-      <input
-        matInput
-        placeholder="Email"
-        formControlName="email"
-        appearance="fill"
-      />
-      <mat-hint *ngIf="signupForm.controls.email.errors"
-        >Email is required</mat-hint
-      >
-    </mat-form-field>
+<div class="main-container">
+  <div class="row-one"></div>
+  <div class="row-two">
+    <div class="title"><h1>Sign up</h1></div>
+    <form [formGroup]="signupForm">
+      <div class="container">
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Name"
+            formControlName="name"
+            appearance="fill"
+          />
+          <mat-hint *ngIf="signupForm.controls.name.errors"
+            >Name is required</mat-hint
+          >
+        </mat-form-field>
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Username"
+            formControlName="username"
+            appearance="fill"
+          />
+          <mat-hint *ngIf="signupForm.controls.username.errors"
+            >Username is required</mat-hint
+          >
+        </mat-form-field>
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Email"
+            formControlName="email"
+            appearance="fill"
+          />
+          <mat-hint *ngIf="signupForm.controls.email.errors"
+            >Email is required</mat-hint
+          >
+        </mat-form-field>
 
-    <mat-form-field>
-      <input
-        matInput
-        type="password"
-        placeholder="Password"
-        formControlName="password"
-        appearance="fill"
-      />
-      <mat-hint *ngIf="signupForm.controls.password.errors"
-        >Password is required</mat-hint
-      >
-    </mat-form-field>
-    <mat-form-field>
-      <input
-        matInput
-        type="password"
-        placeholder="Confirm Password"
-        formControlName="passwordConfirm"
-        appearance="fill"
-      />
-      <mat-hint *ngIf="signupForm.controls.passwordConfirm.errors"
-        >Password is required</mat-hint
-      >
-    </mat-form-field>
+        <mat-form-field>
+          <input
+            matInput
+            type="password"
+            placeholder="Password"
+            formControlName="password"
+            appearance="fill"
+          />
+          <mat-hint *ngIf="signupForm.controls.password.errors"
+            >Password is required</mat-hint
+          >
+        </mat-form-field>
+        <mat-form-field>
+          <input
+            matInput
+            type="password"
+            placeholder="Confirm Password"
+            formControlName="passwordConfirm"
+            appearance="fill"
+          />
+          <mat-hint *ngIf="signupForm.controls.passwordConfirm.errors"
+            >Password is required</mat-hint
+          >
+        </mat-form-field>
 
-    <button
-      mat-flat-button
-      color="primary"
-      [disabled]="!signupForm.valid"
-      (click)="onsubmitForm()"
-    >
-      Sign-Up
-    </button>
+        <button
+          mat-flat-button
+          color="primary"
+          [disabled]="!signupForm.valid"
+          (click)="onsubmitForm()"
+        >
+          Sign-Up
+        </button>
+      </div>
+    </form>
   </div>
-</form>
+</div>

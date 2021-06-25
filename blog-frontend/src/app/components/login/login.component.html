@@ -1,39 +1,54 @@
-<div class="title"><h1>Sign In</h1></div>
+<div class="main-container">
+  <div class="row-one"></div>
+  <div class="row-two">
+    <div class="form">
+      <div class="title"><h1>Sign In</h1></div>
 
-<form [formGroup]="loginForm">
-  <div class="container">
-    <mat-form-field>
-      <input
-        matInput
-        placeholder="Email"
-        formControlName="email"
-        appearance="fill"
-      />
-      <mat-hint *ngIf="loginForm.controls.email.errors"
-        >Email is required</mat-hint
-      >
-    </mat-form-field>
+      <form [formGroup]="loginForm">
+        <div class="container">
+          <mat-form-field>
+            <input
+              matInput
+              placeholder="Email"
+              formControlName="email"
+              appearance="fill"
+            />
+            <mat-hint *ngIf="loginForm.controls.email.errors"
+              >Email is required</mat-hint
+            >
+          </mat-form-field>
 
-    <mat-form-field>
-      <input
-        matInput
-        type="password"
-        placeholder="Password"
-        formControlName="password"
-        appearance="fill"
-      />
-      <mat-hint *ngIf="loginForm.controls.password.errors"
-        >Password is required</mat-hint
-      >
-    </mat-form-field>
+          <mat-form-field>
+            <input
+              matInput
+              type="password"
+              placeholder="Password"
+              formControlName="password"
+              appearance="fill"
+            />
+            <mat-hint *ngIf="loginForm.controls.password.errors"
+              >Password is required</mat-hint
+            >
+          </mat-form-field>
 
-    <button
-      mat-flat-button
-      color="primary"
-      [disabled]="!loginForm.valid"
-      (click)="onsubmitForm()"
-    >
-      Sign-In
-    </button>
+          <button
+            id="login_btn"
+            mat-flat-button
+            color="primary"
+            [disabled]="!loginForm.valid"
+            (click)="onsubmitForm()"
+          >
+            Sign-In
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <div class="info">
+      <div class="des"><h5>Don't you have an account?</h5></div>
+      <button mat-flat-button color="primary" (click)="navigateToSignup()">
+        Sign-Up
+      </button>
+    </div>
   </div>
-</form>
+</div>

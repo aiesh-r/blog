@@ -24,16 +24,16 @@ export class CustomValidation {
 
   static passwordMatchValidation(controls: AbstractControl): ValidationErrors {
     const password = controls.get('password')?.value;
-    const confirmPassword = controls.get('confirmPassword')?.value;
+    const confirmPassword = controls.get('passwordConfirm')?.value;
 
     if (
       password === confirmPassword &&
       password !== null &&
       confirmPassword !== null
     ) {
-      return { paswwordUnmatch: false };
+      return { passwordUnmatch: false };
     } else {
-      return { paswwordNotmatch: true };
+      return { passwordNotmatch: true };
     }
   }
 }
@@ -60,7 +60,7 @@ export class RegisterComponent implements OnInit {
           [
             Validators.required,
             Validators.minLength(4),
-            CustomValidation.passwordValidateforNumbers,
+            // CustomValidation.passwordValidateforNumbers,
           ],
         ],
         passwordConfirm: [
@@ -68,12 +68,12 @@ export class RegisterComponent implements OnInit {
           [
             Validators.required,
             Validators.minLength(4),
-            CustomValidation.passwordValidateforNumbers,
+            // CustomValidation.passwordValidateforNumbers,
           ],
         ],
       },
       {
-        Validators: CustomValidation.passwordMatchValidation,
+        // Validators: CustomValidation.passwordMatchValidation,
       }
     );
   }

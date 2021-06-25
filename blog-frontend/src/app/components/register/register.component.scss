@@ -1,3 +1,21 @@
+.main-container {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  height: 100%;
+}
+.row-one {
+  width: 60%;
+  background-image: url("../../../assets/images/bc_image.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.row-two {
+  width: 40%;
+  background-color: #82bade;
+}
+
 h1 {
   text-align: center;
   font-weight: bold;

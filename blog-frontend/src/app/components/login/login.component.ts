@@ -46,9 +46,8 @@ export class LoginComponent implements OnInit {
       .subscribe();
   }
 
-  // login() {
-  //   this.authService
-  //     .login('anu@gmail.com', '1111')
-  //     .subscribe((data) => console.log('SUCCESS'));
-  // }
+  navigateToSignup() {
+    console.log('naviagtion in progerss');
+    this.route.navigate(['/signup']);
+  }
 }
